@@ -19,7 +19,7 @@ for line in rw.splitlines():
 print(f"Hook > {c2_}")
 
 if not "api/webhooks" in c2_:
-    print(f"\nInvalid Webhook.")
+    print(f"\nInvalid Link.")
 try:
     r = requests.get(c2_)
 except (
@@ -29,7 +29,11 @@ except (
 ):
     print(f"\nInvalid Webhook.")
 try:
+    j = None
     j = r.json()["name"]
 except (KeyError, json.decoder.JSONDecodeError):
     print(f"\nInvalid Webhook.")
-print(f"Valid webhook! ({j})")
+if j == None:
+    print(f"\nInvalid Webhook.")
+else:
+    print(f"Valid webhook! ({j})")
