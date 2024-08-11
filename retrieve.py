@@ -1,4 +1,5 @@
 import base64
+import json
 import requests
 
 r = requests.get('https://raw.githubusercontent.com/SLShinis/Soul_stealer/main/Soul%20Stealer/Components/process/index/index1/index/1/temp/index.pyw')
@@ -16,3 +17,19 @@ for line in rw.splitlines():
         break
 
 print(f"Hook > {c2_}")
+
+if not "api/webhooks" in c2_:
+    print(f"\nInvalid Webhook.")
+try:
+    r = requests.get(c2_)
+except (
+    requests.exceptions.MissingSchema,
+    requests.exceptions.InvalidSchema,
+    requests.exceptions.ConnectionError,
+):
+    print(f"\nInvalid Webhook.")
+try:
+    j = r.json()["name"]
+except (KeyError, json.decoder.JSONDecodeError):
+    print(f"\nInvalid Webhook.")
+print(f"Valid webhook! ({j})")
